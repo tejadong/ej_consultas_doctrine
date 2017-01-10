@@ -13,18 +13,20 @@ class ConsultasController extends Controller
      */
     public function ej1Action()
     {
-        $em = $this->getDoctrine()->getManager();
-        $alumnado = $em->getRepository('AppBundle:Alumno')->findBy(['nombre' => 'María']);
+        /*$em = $this->getDoctrine()->getManager();
+        $alumnado = $em->getRepository('AppBundle:Alumno')->findBy(['nombre' => 'María']);*/
 
         /** @var EntityManager $em */
-        /*$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $alumnado = $em->createQueryBuilder()
             ->select('a')
             ->from('AppBundle:Alumno', 'a')
-            ->where('a.nombre = :nombre')
-            ->setParameter('nombre', 'María')
+            ->where('a.fechaNacimiento > :fechaInicio')
+            ->andWhere('a.fechaNacimiento > :fechaFin')
+            ->setParameter('fechaInicio', new \DateTime('1997-01-01'))
+            ->setParameter('fechaFin', new \DateTime('1997-03-01'))
             ->getQuery()
-            ->getResult();*/
+            ->getResult();
 
         /*$alumnado = $em->createQuery('SELECT a FROM AppBundle:Alumno a WHERE a.nombre=:nombre ORDER BY a.apellidos DESC')
             ->setParameter('nombre', 'María')
