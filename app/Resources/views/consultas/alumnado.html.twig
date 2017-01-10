@@ -7,6 +7,7 @@
         <thead>
             <th>Apellidos</th>
             <th>Nombre</th>
+            <th>Fecha nacimiento</th>
             <th>Grupo</th>
         </thead>
         <tbody>
@@ -14,6 +15,7 @@
                 <tr>
                     <td>{{ alumno.apellidos }}</td>
                     <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.fechaNacimiento | date('d/m/Y') }}</td>
                     <td>{{ alumno.grupo.descripcion }}</td>
                 </tr>
             {% endfor %}
